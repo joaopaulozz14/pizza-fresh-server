@@ -49,52 +49,56 @@ export class OrderService {
   }
 
   findAll() {
-    return this.prisma.order.findMany({
-      select: {
-        id: true,
-        table: {
-          select: {
-            number: true,
+    return this.prisma.order
+      .findMany({
+        select: {
+          id: true,
+          table: {
+            select: {
+              number: true,
+            },
+          },
+          user: {
+            select: {
+              name: true,
+            },
+          },
+          _count: {
+            select: {
+              products: true,
+            },
           },
         },
-        user: {
-          select: {
-            name: true,
-          },
-        },
-        _count: {
-          select: {
-            products: true,
-          },
-        },
-      },
-    });
+      })
+      .catch(handleError);
   }
 
   findOne(id: string) {
-    return this.prisma.order.findUnique({
-      where: { id },
-      select: {
-        user: {
-          select: {
-            name: true,
+    return this.prisma.order
+      .findUnique({
+        where: { id },
+        select: {
+          user: {
+            select: {
+              name: true,
+            },
+          },
+          table: {
+            select: {
+              number: true,
+            },
+          },
+          products: {
+            select: {
+              id: true,
+              name: true,
+              price: true,
+              image: true,
+              description: true,
+            },
           },
         },
-        table: {
-          select: {
-            number: true,
-          },
-        },
-        products: {
-          select: {
-            id: true,
-            name: true,
-            price: true,
-            image: true,
-            description: true,
-          },
-        },
-      },
-    });
+      })
+      .catch(handleError);
   }
 }
