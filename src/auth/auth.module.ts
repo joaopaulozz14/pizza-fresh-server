@@ -10,6 +10,7 @@ import { JwtStrategy } from './jwt.strategy';
   imports: [
     PrismaModule,
     PassportModule.register({
+      //toda vez que autenticar com o AuthGuards, usa a estratégia jwt que precisa ser criada e registrada no providers
       defaultStrategy: 'jwt',
     }),
     JwtModule.register({
