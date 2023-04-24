@@ -8,14 +8,22 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger/dist/decorators';
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger/dist/decorators';
 import { CreateTableDto } from './dto/create-table.dto';
 import { TableService } from './table.service';
 import { Table } from './entities/table.entity';
 import { UpdateTableDto } from './dto/uptade-table.dto';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('table')
+@UseGuards(AuthGuard())
+@ApiBearerAuth()
 @Controller('table')
 export class TableController {
   constructor(private tableService: TableService) {}
