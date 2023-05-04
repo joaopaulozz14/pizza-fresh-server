@@ -15,6 +15,7 @@ export class ProductService {
 
   create(dto: CreateProductDto): Promise<Product> {
     const data: Product = { ...dto };
+    console.log(typeof data.price);
     return this.prisma.product.create({ data }).catch(handleError);
   }
 

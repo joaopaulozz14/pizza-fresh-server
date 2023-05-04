@@ -1,9 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsInt, IsPositive } from 'class-validator';
+import { IsInt, IsPositive, IsUUID } from 'class-validator';
 import { CreateOrderProductDto } from './create-order-product.dto';
 import { Type } from 'class-transformer';
 
 export class CreateOrderDto {
+  @IsUUID()
+  @ApiProperty({
+    description: 'ID do usuário que está criando o pedido',
+    example: '4c60d067-e43a-4e3e-90c4-ed886b1a5e0b',
+  })
+  userId: string;
+
   @IsInt()
   @IsPositive()
   @ApiProperty({
