@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "dist"
   },
   "scripts": {
     "build": "nest build",
