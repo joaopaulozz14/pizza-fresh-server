@@ -1,6 +1,4 @@
 {
-  "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
   "compilerOptions": {
     "typeRoots": ["node_modules/@types"],
     "module": "commonjs",
@@ -20,6 +18,5 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
-  },
-  "include": ["src/**/*.ts", "dist/**/*"]
+  }
 }
